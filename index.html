@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Matrix Calculator BD</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="topbar">
+  <div>
+    <h1 data-i18n="title">Matrix Calculator BD</h1>
+    <p data-i18n="tagline">Add, multiply, invert and explore matrices — fully offline.</p>
+  </div>
+  <button id="langBtn" class="lang-btn" type="button">বাংলা</button>
+</header>
+
+<main>
+  <section class="panel">
+    <div class="matrices">
+      <div class="matrix-box">
+        <h2 data-i18n="matrixA">Matrix A</h2>
+        <div class="size-row">
+          <label><span data-i18n="rows">Rows</span>
+            <select id="aRows"><option value="2" selected>2</option><option value="3">3</option><option value="4">4</option></select></label>
+          <label><span data-i18n="cols">Cols</span>
+            <select id="aCols"><option value="2" selected>2</option><option value="3">3</option><option value="4">4</option></select></label>
+        </div>
+        <div id="aGrid" class="grid"></div>
+        <div class="fill-row">
+          <button id="fillIdentity" type="button" data-i18n="fillIdentityA">Identity → A</button>
+          <button id="fillZero" type="button" data-i18n="fillZeroA">Zero → A</button>
+          <button id="fillSample" type="button" data-i18n="fillSampleA">Sample → A</button>
+        </div>
+      </div>
+      <div class="matrix-box">
+        <h2 data-i18n="matrixB">Matrix B</h2>
+        <div class="size-row">
+          <label><span data-i18n="rows">Rows</span>
+            <select id="bRows"><option value="2" selected>2</option><option value="3">3</option><option value="4">4</option></select></label>
+          <label><span data-i18n="cols">Cols</span>
+            <select id="bCols"><option value="2" selected>2</option><option value="3">3</option><option value="4">4</option></select></label>
+        </div>
+        <div id="bGrid" class="grid"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2 data-i18n="operations">Operations</h2>
+    <div class="ops">
+      <button id="opAdd" type="button" data-i18n="opAdd">A + B</button>
+      <button id="opSub" type="button" data-i18n="opSub">A − B</button>
+      <button id="opMul" type="button" data-i18n="opMul">A × B</button>
+      <button id="opMulBA" type="button" data-i18n="opMulBA">B × A</button>
+      <button id="opTranspose" type="button" data-i18n="opTranspose">Transpose A</button>
+      <button id="opDet" type="button" data-i18n="opDet">det(A)</button>
+      <button id="opInverse" type="button" data-i18n="opInverse">A⁻¹</button>
+      <button id="opTrace" type="button" data-i18n="opTrace">trace(A)</button>
+    </div>
+    <div class="scalar-row">
+      <label><span data-i18n="scalar">Scalar k</span>
+        <input id="scalarInput" type="text" inputmode="decimal" value="2"></label>
+      <button id="opScalar" type="button" data-i18n="opScalar">k × A</button>
+    </div>
+  </section>
+
+  <section class="panel" aria-live="polite">
+    <h2 data-i18n="result">Result</h2>
+    <p id="resultEmpty" class="empty" data-i18n="noResult">No calculation yet. Enter numbers and pick an operation.</p>
+    <p id="resultError" class="error" hidden></p>
+    <div id="resultGrid" class="grid result-grid"></div>
+    <div id="resultScalar" class="scalar-out"></div>
+    <button id="copyBtn" type="button" hidden data-i18n="copyResult">Copy result as text</button>
+  </section>
+
+  <section class="panel">
+    <h2 data-i18n="history">History</h2>
+    <ul id="historyList"></ul>
+    <div class="data-row">
+      <button id="clearHistory" type="button" data-i18n="clearHistory">Clear history</button>
+      <button id="exportBtn" type="button" data-i18n="exportBtn">Export history (JSON)</button>
+      <label class="import-label"><span data-i18n="importBtn">Import history (JSON)</span>
+        <input id="importFile" type="file" accept="application/json,.json"></label>
+    </div>
+    <p id="importMsg" class="msg"></p>
+  </section>
+
+  <section class="panel">
+    <h2 data-i18n="howTitle">How it works</h2>
+    <p data-i18n="howText">Type numbers into A and B (or use the fill buttons), then pick an operation. Addition and subtraction need the same size; multiplication needs A columns = B rows. Determinant, inverse and trace need a square A. Everything runs in your browser — no data ever leaves this page.</p>
+  </section>
+</main>
+
+<footer data-i18n="footer">Educational tool. Results are rounded to 6 decimal places. 100% offline — no accounts, no network requests.</footer>
+
+<script src="js/logic.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
